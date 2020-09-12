@@ -1,25 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import {Route, Switch, Redirect, withRouter, BrowserRouter} from 'react-router-dom';
+import './static/styles/base.scss'
+import Home from "./containers/home";
+import Search from "./containers/search";
+import TestPage from "./containers/testPage";
 
+// https://css-tricks.com/the-hooks-of-react-router/
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact={true} path='/'>
+        <Home/>
+      </Route>
+      <Route path='/search'>
+        <Search/>
+      </Route>
+      <Route path='/test'>
+        {TestPage}
+      </Route>
+      <Route component={Search}/>
+    </Switch>
   );
 }
 

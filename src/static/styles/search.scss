@@ -1,0 +1,130 @@
+@import "variable";
+
+$SEARCH_WIDTH: 40%;
+
+  .search-header {
+    width: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    background: $COLOR_DARK;
+    position: sticky !important;
+    position: -webkit-sticky !important; /* 사파리 브라우저 지원 */
+    padding: 20px 10px;
+    top: 0;
+    .search-input {
+      width: 100%;
+      min-height: 32px;
+      background: $COLOR_DARK;
+      border: 1px solid #61dafb;
+      padding: 0 10px;
+      @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 14px);
+    }
+  }
+  .search-container {
+    display: flex;
+    min-height: 100vh;
+    height: inherit;
+
+    .search-refresh {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      margin: auto;
+      width: 200px;
+      height: 200px;
+      @include setRotateAnimation();
+      @include setCursorPointer();
+    }
+
+    .search-articles {
+      width: 100%;
+    }
+
+    .search-dialog {
+      z-index: 10;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: block;
+      position: fixed;
+      background: $COLOR_000000_OP_90;
+
+      .sd-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+
+        .sd-close {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 60px;
+          z-index: 15;
+          @include setCursorPointer();
+          @include setNonSelectable();
+        }
+
+        #sd-desc {
+          @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 24px);
+          @include setCursorDefault();
+          @include setNonSelectable();
+          width: $SEARCH_WIDTH;
+          margin-top: 20px;
+        }
+
+        .sd-title {
+          min-height: 60px;
+          width: $SEARCH_WIDTH;
+          margin-top: 10px;
+          padding: 18px;
+          background: $COLOR_000000;
+          border: 1px solid #61dafb;
+          @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 14px);
+        }
+
+        .sd-content {
+          width: $SEARCH_WIDTH;
+          margin-top: 6px;
+          max-height: 300px;
+          height: 300px;
+          background: $COLOR_000000;
+          border: 1px solid #61dafb;
+          padding: 18px;
+          resize: none;
+          line-height: 150%;
+          @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 16px);
+        }
+
+        .sd-write {
+          width: $SEARCH_WIDTH;
+          margin-top: 50px;
+          padding: 10px;
+          background: $COLOR_000000;
+          border: 1px solid $COLOR_SUCCESS;
+          @include setCursorPointer();
+          @include setFont($COLOR_SUCCESS, $FONT_WEIGHT_BOLD, 20px);
+        }
+      }
+    }
+
+    .search-add-btn {
+      width: 60px;
+      height: 60px;
+      position: fixed;
+      z-index: 5;
+      right: 20px;
+      bottom: 20px;
+      @include setCursorPointer();
+    }
+  }
+
+
