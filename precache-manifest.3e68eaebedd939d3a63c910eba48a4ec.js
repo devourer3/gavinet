@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "434bc8fdb39d36225f2cb1159c4781a6",
+    "revision": "1164b0c4c83e785b5ab084582ff5c66d",
     "url": "/gavinet/index.html"
   },
   {
-    "revision": "2cc2b2c7d91b841755f7",
-    "url": "/gavinet/static/css/main.1f855353.chunk.css"
+    "revision": "e329e1ae4ebeae74daa6",
+    "url": "/gavinet/static/css/main.7a24bb18.chunk.css"
   },
   {
-    "revision": "4fefe1ef3332e675974e",
-    "url": "/gavinet/static/js/2.cf01616d.chunk.js"
+    "revision": "2e22632970a174e221db",
+    "url": "/gavinet/static/js/2.f912b366.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/gavinet/static/js/2.cf01616d.chunk.js.LICENSE.txt"
+    "url": "/gavinet/static/js/2.f912b366.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2cc2b2c7d91b841755f7",
-    "url": "/gavinet/static/js/main.fda8c271.chunk.js"
+    "revision": "e329e1ae4ebeae74daa6",
+    "url": "/gavinet/static/js/main.c00d2cb2.chunk.js"
   },
   {
     "revision": "99c6aa1b39a80caaa922",
@@ -34,5 +34,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "96c489313b6c0000d3a5de82e7b094b8",
     "url": "/gavinet/static/media/refresh.96c48931.svg"
+  },
+  {
+    "revision": "60f9fffb2342e5726dd4779dd6dd9784",
+    "url": "/gavinet/static/media/trash.60f9fffb.svg"
   }
 ]);
