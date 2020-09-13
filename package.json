@@ -2,6 +2,7 @@
   "name": "annoyinglaunch_c",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://devourer3.github.io/gavinet",
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/styles": "^4.10.0",
@@ -29,10 +30,14 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "typesafe-actions": "^5.1.0",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "gh-pages": "^3.1.0",
+    "@types/gh-pages": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
