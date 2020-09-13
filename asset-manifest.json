@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/gavinet/static/css/main.1f855353.chunk.css",
-    "main.js": "/gavinet/static/js/main.b91cf52d.chunk.js",
-    "main.js.map": "/gavinet/static/js/main.b91cf52d.chunk.js.map",
+    "main.js": "/gavinet/static/js/main.fda8c271.chunk.js",
+    "main.js.map": "/gavinet/static/js/main.fda8c271.chunk.js.map",
     "runtime-main.js": "/gavinet/static/js/runtime-main.2be40528.js",
     "runtime-main.js.map": "/gavinet/static/js/runtime-main.2be40528.js.map",
     "static/js/2.cf01616d.chunk.js": "/gavinet/static/js/2.cf01616d.chunk.js",
     "static/js/2.cf01616d.chunk.js.map": "/gavinet/static/js/2.cf01616d.chunk.js.map",
     "index.html": "/gavinet/index.html",
-    "precache-manifest.75bd3198607df27fe6dbce4382080d38.js": "/gavinet/precache-manifest.75bd3198607df27fe6dbce4382080d38.js",
+    "precache-manifest.a088e5ebdcf784d0ca3b076ed4cfc955.js": "/gavinet/precache-manifest.a088e5ebdcf784d0ca3b076ed4cfc955.js",
     "service-worker.js": "/gavinet/service-worker.js",
     "static/css/main.1f855353.chunk.css.map": "/gavinet/static/css/main.1f855353.chunk.css.map",
     "static/js/2.cf01616d.chunk.js.LICENSE.txt": "/gavinet/static/js/2.cf01616d.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.2be40528.js",
     "static/js/2.cf01616d.chunk.js",
     "static/css/main.1f855353.chunk.css",
-    "static/js/main.b91cf52d.chunk.js"
+    "static/js/main.fda8c271.chunk.js"
   ]
 }
