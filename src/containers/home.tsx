@@ -108,16 +108,20 @@ function Home() {
                 }}>
           {t('S0003')}
         </button>
-        <span className={"input-wrapper"}>
+        <span
+          hidden={true}
+          className={"input-wrapper"}>
           <input className={"corp-form"}
                  onChange={(e) => {
                    onChangeName(e)
                  }}
           />
-          <button className={"btn-send"}
-                  onClick={(e) => {
-                    sendCorps(e)
-                  }}>전송</button>
+          <button
+            hidden={true}
+            className={"btn-send"}
+            onClick={(e) => {
+              sendCorps(e)
+            }}>전송</button>
         </span>
       </div>
     </>

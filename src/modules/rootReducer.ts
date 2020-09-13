@@ -1,9 +1,10 @@
 import {combineReducers} from "redux";
-import counter from "../modules/counter";
+import counterModules from "./counter.modules";
+import globalModules from "./global.modules"
 
 const rootReducer = combineReducers({
-  counter,
-  // articles
+  // counter: counterModules,
+  globals: globalModules
 });
 
 export default rootReducer;

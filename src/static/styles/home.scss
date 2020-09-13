@@ -6,7 +6,8 @@
   flex-direction: column;
   align-items: center;
   .home-title {
-    @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_BOLD, 20px, false);
+    margin-top: 40px;
+    @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_BOLD, 30px, false);
   }
   #home-btn {
     margin-top: 120px;

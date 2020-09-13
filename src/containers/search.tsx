@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useTranslation} from "react-i18next";
 import axios from 'axios';
 import {RestaurantInterface} from "../interface/restaurant.interface";
 import {getCookie, setTokenCookie} from "../utils/cookieUtil";
 import * as bcrypt from 'bcrypt';
 import {Link, withRouter, useHistory} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {makeStyles, useTheme} from '@material-ui/styles';
 import {Button, Container, Typography} from "@material-ui/core";
 import '../static/styles/search.scss'
@@ -15,35 +15,30 @@ import icRefresh from '../static/images/refresh.svg'
 import {gvRequest} from "../api/api";
 import SearchItem from "../components/searchItem";
 import ArticlesInterface from "../interface/articles.interface";
-
-// type Props = {
-//   button: any,
-//   component: any
-// }
+import dotenv from "dotenv";
+import {RootState} from "../modules/rootReducer";
+import {dismissDialog} from "../modules/global.modules";
 
 function Search() {
-  const [isShowDialog, setDialogShow] = useState<boolean>(false);
-  const [isShowRefresh, setShowRefresh] = useState<boolean>(false);
-  const [item, setItem] = useState<ArticlesInterface[]>([]);
-  const [search, setSearch] = useState<string>("");
-  const [article, setArticle] = useState<object>({
-    "articleTitle": "",
-    "articleContent": ""
-  });
+  const globalState = useSelector(((state: RootState) => state.globals), shallowEqual);
+  const dispatcher = useDispatch();
   const {t, i18n} = useTranslation();
   const history = useHistory();
-
   useEffect(() => {
     // Use [] as second argument in useEffect for not rendering each time
     getAllQuestions();
-    // gvRequest('get', 'question')
-    //   .then(value => {
-    //     setItem(value.data.questions);
-    //   })
-    //   .catch(reason => {
-    //     console.log(`FAIL: ${reason}`);
-    //   })
   }, []);
+
+  // const [deleteId, setDeleteId] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isShowDialog, setDialogShow] = useState<boolean>(false);
+  const [isShowRefresh, setShowRefresh] = useState<boolean>(false);
+  const [item, setItem] = useState<ArticlesInterface[]>([]); // 검색 결과물
+  const [search, setSearch] = useState<string>(""); // 검색어
+  const [article, setArticle] = useState<any>({ // 작성물
+    "articleTitle": "",
+    "articleContent": ""
+  });
 
   const getAllQuestions = () => {
     gvRequest('get', 'question')
@@ -87,11 +82,25 @@ function Search() {
         }
       })
       .catch(reason => {
-        console.log(reason);
+        console.log(`ERROR: ${reason}`);
       })
       .finally(() => {
         setSearch("");
       });
+  }
+
+  const deleteQuestion = (questionId: string) => {
+    gvRequest('delete', `question/delete/${questionId}`, {password:password})
+      .then(value => {
+        console.log(`VALUE: ${value}`);
+        getAllQuestions();
+      })
+      .catch(err => {
+        console.log(`ERR: ${err}`);
+      })
+      .finally(() => {
+        dispatcher(dismissDialog(""));
+      })
   }
 
   const onClickShowAdd = () => {
@@ -107,14 +116,57 @@ function Search() {
   }
 
   const onClickWrite = (e: any) => {
-    gvRequest('post', 'question/create', article, null)
-      .then(value => {
-        console.log(value);
-      })
-      .catch(reason => {
-        console.log(reason);
-      })
-      .finally(onClickShowAdd);
+    if (article.articleTitle.trim().length > 0 && article.articleContent.trim().length > 0) {
+      gvRequest('post', 'question/create', article, null)
+        .then(value => {
+          getAllQuestions();
+          // setItem(oldArray => [...oldArray, value.data.questions]); // 기존 state에 push하는 법
+        })
+        .catch(reason => {
+          console.log(`Error: ${reason}`);
+        })
+        .finally(onClickShowAdd);
+    }
+  }
+
+  function renderDeletePopup() {
+    if (globalState.isShowDialog) {
+      return (
+        <>
+          <div className={"sd-delete"}>
+            <div className={"delete-container"}>
+              <span className={"delete-title"}>{t('S0004')}</span>
+              <form>
+                <input
+                  type="password"
+                  className={"delete-pw"}
+                  autoComplete={"on"}
+                  value={password}
+                  onChange={event => {
+                    setPassword(event.target.value)
+                  }}/>
+              </form>
+              <div className={"delete-btn-container"}>
+                <span
+                  className={"delete-confirm"}
+                  onClick={(event => {
+                    deleteQuestion(globalState.deleteId)
+                  })}>
+                  {t('W0005')}
+                </span>
+                <span
+                  className={"delete-cancel"}
+                  onClick={(event) => {
+                    dispatcher(dismissDialog(""));
+                  }}>
+                  {t('W0006')}
+                </span>
+              </div>
+            </div>
+          </div>
+        </>
+      )
+    }
   }
 
   function renderArticles() {
@@ -122,7 +174,12 @@ function Search() {
       return (
         <ul className={"search-articles"}>
           {
-            item.map((value, index) => SearchItem(value))
+            item.map(
+              (value, index) =>
+                <SearchItem key={index}
+                            articleTitle={value.articleTitle}
+                            articleContent={value.articleContent}
+                            _id={value._id}/>)
           }
         </ul>
       )
@@ -182,6 +239,7 @@ function Search() {
       <div className={"search-container"}>
         {renderAddDialog()}
         {renderArticles()}
+        {renderDeletePopup()}
         {
           isShowRefresh &&
 										<img className={"search-refresh"}

@@ -6,12 +6,13 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
 import {CssBaseline} from "@material-ui/core";
-import rootReducer from "./interface/types";
+import rootReducer from "./modules/rootReducer";
 import {BrowserRouter, HashRouter} from "react-router-dom";
 import './static/lang/i18n';
-import {createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
+import dotenv from 'dotenv';
 
-const store = createStore(rootReducer);
+dotenv.config();
 
 const theme = createMuiTheme({
   palette: {
@@ -39,6 +40,7 @@ const theme = createMuiTheme({
     fontWeightRegular: 500,
   },
 });
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>

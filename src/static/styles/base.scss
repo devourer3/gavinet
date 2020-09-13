@@ -57,6 +57,13 @@ body {
   min-height: 100vh;
   #root {
     min-height: 100vh;
+    .home-btn {
+      @include setCursorPointer();
+      position: fixed;
+      top: 23px;
+      left: 20px;
+      @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_BOLD, 20px);
+    }
   }
 }
 

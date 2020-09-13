@@ -4,10 +4,15 @@
   "W0001": "Title",
   "W0002": "Content",
   "W0003": "Write",
+  "W0004": "Gavinet",
+  "W0005": "Confirm",
+  "W0006": "Cancel",
 
 
   "S0000": "Gavin's Junk",
   "S0001": "CS Search Engine",
   "S0002": "What is lunch for today?",
-  "S0003": "Construct..."
+  "S0003": "Construct...",
+  "S0004": "Delete it?"
+
 }

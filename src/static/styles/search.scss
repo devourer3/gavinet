@@ -6,6 +6,7 @@ $SEARCH_WIDTH: 40%;
     width: 100%;
     left: 0;
     right: 0;
+    z-index: 100;
     display: flex;
     align-items: center;
     min-height: 50px;
@@ -43,6 +44,65 @@ $SEARCH_WIDTH: 40%;
 
     .search-articles {
       width: 100%;
+    }
+
+    .sd-delete {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 200;
+      background: $COLOR_000000_OP_90;
+      .delete-container {
+        display: flex;
+        min-width: 240px;
+        position: absolute;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid #FF6600;
+        padding: 20px;
+        border-radius: 10px;
+        margin: auto;
+        .delete-title {
+          @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 18px);
+        }
+        .delete-pw {
+          margin-top: 20px;
+          min-height: 30px;
+          border: 1px solid #61dafb;
+          @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 16px);
+          background: transparent;
+        }
+        .delete-btn-container {
+          display: flex;
+          width: 100%;
+          min-height: 30px;
+          flex-direction: row;
+          align-items: center;
+          text-align: center;
+          padding-top: 20px;
+          .delete-confirm {
+            width: 100%;
+            height: inherit;
+            align-self: center;
+            @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 16px);
+            @include setCursorPointer();
+          }
+          .delete-cancel {
+            width: 100%;
+            height: inherit;
+            @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 16px);
+            @include setCursorPointer();
+          }
+        }
+      }
     }
 
     .search-dialog {

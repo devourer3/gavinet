@@ -1,12 +1,21 @@
 @import "variable";
 
 .search-item {
-  @include setCursorPointer();
   display: flex;
   flex-direction: column;
   border: 1px solid $COLOR_37474F;
   padding: 20px;
   margin: 20px 10px;
+
+  .search-trash {
+    position: absolute;
+    align-self: flex-end;
+    z-index: 50;
+    background: $COLOR_DARK;
+    width: 30px;
+    height: 30px;
+    @include setCursorPointer();
+  }
 
   .search-title {
     @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_BOLD, 32px, true);

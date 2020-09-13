@@ -12,9 +12,9 @@ const initialState: CounterState = {
   count: 0
 };
 
-const INCREASE = 'counter/INCREASE';
-const DECREASE = 'counter/DECREASE';
-const INCREASE_BY = 'counter/INCREASE_BY';
+const INCREASE = 'counterModules/INCREASE';
+const DECREASE = 'counterModules/DECREASE';
+const INCREASE_BY = 'counterModules/INCREASE_BY';
 
 export const increase = createAction(INCREASE)();
 // () => ({ type: INCREASE })
@@ -29,11 +29,11 @@ const actions = { increase, decrease, increaseBy };
 
 type CounterAction = ActionType<typeof actions>;
 
-const counter = createReducer<CounterState, CounterAction>(initialState)
+const counterModules = createReducer<CounterState, CounterAction>(initialState)
   .handleAction(increase, state => ({ count: state.count + 1 }))
   .handleAction(decrease, state => ({ count: state.count - 1 }))
   .handleAction(increaseBy, (state, action) => ({
     count: state.count + action.payload
   }));
 
-export default counter;
+export default counterModules;
