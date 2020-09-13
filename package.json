@@ -2,7 +2,7 @@
   "name": "annoyinglaunch_c",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://devourer3.github.io/gavinet",
+  "homepage": "https://devourer3.github.io/gavinet/",
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/styles": "^4.10.0",

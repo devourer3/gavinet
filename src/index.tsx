@@ -45,7 +45,7 @@ ReactDOM.render(
     <CssBaseline/>
     <Provider store={store}>
       <MuiThemeProvider theme={theme}>
-        <BrowserRouter forceRefresh={true}>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <App/>
         </BrowserRouter>
       </MuiThemeProvider>
