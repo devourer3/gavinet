@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/gavinet/static/css/main.7a24bb18.chunk.css",
-    "main.js": "/gavinet/static/js/main.c00d2cb2.chunk.js",
-    "main.js.map": "/gavinet/static/js/main.c00d2cb2.chunk.js.map",
+    "main.css": "/gavinet/static/css/main.04d75603.chunk.css",
+    "main.js": "/gavinet/static/js/main.4341e57d.chunk.js",
+    "main.js.map": "/gavinet/static/js/main.4341e57d.chunk.js.map",
     "runtime-main.js": "/gavinet/static/js/runtime-main.2be40528.js",
     "runtime-main.js.map": "/gavinet/static/js/runtime-main.2be40528.js.map",
     "static/js/2.f912b366.chunk.js": "/gavinet/static/js/2.f912b366.chunk.js",
     "static/js/2.f912b366.chunk.js.map": "/gavinet/static/js/2.f912b366.chunk.js.map",
     "index.html": "/gavinet/index.html",
-    "precache-manifest.3e68eaebedd939d3a63c910eba48a4ec.js": "/gavinet/precache-manifest.3e68eaebedd939d3a63c910eba48a4ec.js",
+    "precache-manifest.e490ed1183757632963a8fef6306a850.js": "/gavinet/precache-manifest.e490ed1183757632963a8fef6306a850.js",
     "service-worker.js": "/gavinet/service-worker.js",
-    "static/css/main.7a24bb18.chunk.css.map": "/gavinet/static/css/main.7a24bb18.chunk.css.map",
+    "static/css/main.04d75603.chunk.css.map": "/gavinet/static/css/main.04d75603.chunk.css.map",
     "static/js/2.f912b366.chunk.js.LICENSE.txt": "/gavinet/static/js/2.f912b366.chunk.js.LICENSE.txt",
     "static/media/close.svg": "/gavinet/static/media/close.84b1411d.svg",
     "static/media/memo.svg": "/gavinet/static/media/memo.e07981d7.svg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.2be40528.js",
     "static/js/2.f912b366.chunk.js",
-    "static/css/main.7a24bb18.chunk.css",
-    "static/js/main.c00d2cb2.chunk.js"
+    "static/css/main.04d75603.chunk.css",
+    "static/js/main.4341e57d.chunk.js"
   ]
 }

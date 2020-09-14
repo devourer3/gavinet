@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1164b0c4c83e785b5ab084582ff5c66d",
+    "revision": "d54c59120a3fdab8b79024d37a93b0ad",
     "url": "/gavinet/index.html"
   },
   {
-    "revision": "e329e1ae4ebeae74daa6",
-    "url": "/gavinet/static/css/main.7a24bb18.chunk.css"
+    "revision": "3d8c233bfbf11de158bc",
+    "url": "/gavinet/static/css/main.04d75603.chunk.css"
   },
   {
     "revision": "2e22632970a174e221db",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gavinet/static/js/2.f912b366.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e329e1ae4ebeae74daa6",
-    "url": "/gavinet/static/js/main.c00d2cb2.chunk.js"
+    "revision": "3d8c233bfbf11de158bc",
+    "url": "/gavinet/static/js/main.4341e57d.chunk.js"
   },
   {
     "revision": "99c6aa1b39a80caaa922",
