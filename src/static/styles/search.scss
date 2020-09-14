@@ -106,7 +106,7 @@ $SEARCH_WIDTH: 40%;
     }
 
     .search-dialog {
-      z-index: 10;
+      z-index: 301;
       left: 0;
       right: 0;
       top: 0;
@@ -184,6 +184,7 @@ $SEARCH_WIDTH: 40%;
       right: 20px;
       bottom: 20px;
       @include setCursorPointer();
+      @include setNonSelectable();
     }
   }
 

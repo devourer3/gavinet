@@ -5,7 +5,7 @@ function TestPage() {
   return (
     <>
       <div className={"test-container"}>
-        {SearchItem({_id: "1234", articleTitle:"테스트", articleContent:"입니다."})}
+        {SearchItem({_id: "10203040", articleTitle:"테스트", articleContent:"입니다.", searchKeyword:""})}
       </div>
     </>
   )

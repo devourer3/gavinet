@@ -12,7 +12,7 @@ export const getAuthHeader = () => {
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
-  timeout: 5000,
+  timeout: 10000,
   timeoutErrorMessage: 'TIME OUT!!!!'
 });
 

@@ -14,15 +14,26 @@
     background: $COLOR_DARK;
     width: 30px;
     height: 30px;
+    @include setNonSelectable();
     @include setCursorPointer();
   }
 
   .search-title {
-    @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_BOLD, 32px, true);
+    .search-title-default {
+      @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_BOLD, 32px, true);
+    }
+    .search-title-color {
+      @include setFont($COLOR_FF6600, $FONT_WEIGHT_BOLD, 32px, true);
+    }
   }
 
   .search-content {
     margin-top: 20px;
-    @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 24px, true);
+    .search-content-default {
+      @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 24px, true);
+    }
+    .search-content-color {
+      @include setFont($COLOR_FF6600, $FONT_WEIGHT_BOLD, 24px, true);
+    }
   }
 }

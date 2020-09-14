@@ -73,6 +73,9 @@ function Search() {
     gvRequest('post', 'question/search', {articleTitle: search}, null)
       .then(value => {
         let items: ArticlesInterface[] = value.data.questions;
+        items.flatMap((value1, index) => {
+          value1.searchKeyword = search;
+        })
         if (items.length > 0) {
           setShowRefresh(false);
           setItem(items);
@@ -90,7 +93,7 @@ function Search() {
   }
 
   const deleteQuestion = (questionId: string) => {
-    gvRequest('delete', `question/delete/${questionId}`, {password:password})
+    gvRequest('delete', `question/delete/${questionId}`, {password: password})
       .then(value => {
         console.log(`VALUE: ${value}`);
         getAllQuestions();
@@ -104,6 +107,7 @@ function Search() {
   }
 
   const onClickShowAdd = () => {
+    setArticle({});
     setDialogShow(!isShowDialog);
   }
 
@@ -116,6 +120,7 @@ function Search() {
   }
 
   const onClickWrite = (e: any) => {
+    if(article.articleTitle && article.articleContent)
     if (article.articleTitle.trim().length > 0 && article.articleContent.trim().length > 0) {
       gvRequest('post', 'question/create', article, null)
         .then(value => {
@@ -177,6 +182,7 @@ function Search() {
             item.map(
               (value, index) =>
                 <SearchItem key={index}
+                            searchKeyword={value.searchKeyword}
                             articleTitle={value.articleTitle}
                             articleContent={value.articleContent}
                             _id={value._id}/>)
@@ -199,6 +205,7 @@ function Search() {
             <span id={"sd-desc"}>{t('W0001')}</span>
             <input
               className={"sd-title"}
+              value={article.articleTitle}
               onChange={(e) => {
                 onChangeTitle(e)
               }}
@@ -206,6 +213,7 @@ function Search() {
             <span id={"sd-desc"}>{t('W0002')}</span>
             <textarea
               className={"sd-content"}
+              value={article.articleContent}
               onChange={(e) => {
                 onChangeContent(e)
               }}
