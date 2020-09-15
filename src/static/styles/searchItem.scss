@@ -20,20 +20,22 @@
 
   .search-title {
     .search-title-default {
-      @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_BOLD, 32px, true);
+      @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_BOLD, 20px, true);
     }
     .search-title-color {
-      @include setFont($COLOR_FF6600, $FONT_WEIGHT_BOLD, 32px, true);
+      @include setFont($COLOR_FF6600, $FONT_WEIGHT_BOLD, 20px, true);
     }
   }
 
   .search-content {
     margin-top: 20px;
     .search-content-default {
-      @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 24px, true);
+      @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 14px, true);
+      white-space: pre-line;
     }
     .search-content-color {
-      @include setFont($COLOR_FF6600, $FONT_WEIGHT_BOLD, 24px, true);
+      @include setFont($COLOR_FF6600, $FONT_WEIGHT_BOLD, 14px, true);
+      white-space: pre-line;
     }
   }
 }

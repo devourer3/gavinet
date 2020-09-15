@@ -20,7 +20,7 @@ function SearchItem(props: articles) {
                 <span className={"search-title-default"}>{word}</span>
                 {
                   (index !== originText.split(keyword).length - 1) &&
-																		<span className={"search-title-color"}>{keyword}</span>
+                  <span className={"search-title-color"}>{keyword}</span>
                 }
               </Fragment>
             );
@@ -34,13 +34,15 @@ function SearchItem(props: articles) {
     return (
       <div className={"search-content"}>
         {
+          // originText.split('/n').map()
           originText.split(keyword).map((word, index) => {
+            console.log(`word: ${word}`);
             return (
               <Fragment key={index}>
                 <span className={"search-content-default"}>{word}</span>
                 {
                   (index !== originText.split(keyword).length - 1) &&
-																		<span className={"search-content-color"}>{keyword}</span>
+                  <span className={"search-content-color"}>{keyword}</span>
                 }
               </Fragment>
             );
