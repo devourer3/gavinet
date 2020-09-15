@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState, Fragment} from 'react';
 import '../static/styles/searchItem.scss'
 import articles from '../interface/articles.interface';
-import icDelete from '../static/images/trash.svg';
+import icDelete from '../static/images/close.svg';
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {RootState} from "../modules/rootReducer";
 import {showDialog} from "../modules/global.modules";
