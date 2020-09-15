@@ -1,6 +1,8 @@
 import axios, {AxiosResponse} from 'axios';
 import {useTranslation} from "react-i18next";
 import * as Global from '../utils/Globals'
+import {logObjectToJson} from "../utils/Globals";
+import {rejects} from "assert";
 
 // const {t, i18n} = useTranslation();
 
@@ -25,8 +27,15 @@ export async function gvRequest(method: string, uri: string, data: any = {}, opt
       ...option
     });
   } catch (error) {
-    console.log('req error', error);
-    return error;
+    const err:any = error.response;
+    logObjectToJson(err);
+    switch (err.status) {
+      case 409:
+        alert("비밀번호 오류");
+        break;
+    }
+    return Promise.reject("INVALID ERROR");
+    // return new DOMException("INVALID ERROR");
   }
 };
 

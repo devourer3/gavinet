@@ -17,7 +17,12 @@ import SearchItem from "../components/searchItem";
 import ArticlesInterface from "../interface/articles.interface";
 import dotenv from "dotenv";
 import {RootState} from "../modules/rootReducer";
-import {dismissDialog} from "../modules/global.modules";
+import {
+  actionDismissDialog,
+  actionModifyContent,
+  actionModifyQuestion,
+  actionModifyTitle
+} from "../modules/global.modules";
 
 function Search() {
   const globalState = useSelector(((state: RootState) => state.globals), shallowEqual);
@@ -92,23 +97,30 @@ function Search() {
       });
   }
 
-  const deleteQuestion = (questionId: string) => {
-    gvRequest('delete', `question/delete/${questionId}`, {password: password})
+  const deleteQuestion = (deleteId: string) => {
+    gvRequest('delete', `question/delete/${deleteId}`, null, {headers: {deletePw: password}})
       .then(value => {
-        console.log(`VALUE: ${value}`);
         getAllQuestions();
+        dispatcher(actionDismissDialog());
       })
       .catch(err => {
-        console.log(`ERR: ${err}`);
+        console.log(err);
       })
       .finally(() => {
-        dispatcher(dismissDialog(""));
       })
   }
 
   const onClickShowAdd = () => {
     setArticle({});
     setDialogShow(!isShowDialog);
+  }
+
+  const onChangeMTitle = (e:any) => {
+    dispatcher(actionModifyTitle({title: e.target.value}));
+  }
+
+  const onChangeMContent = (e:any) => {
+    dispatcher(actionModifyContent({content: e.target.value}));
   }
 
   const onChangeTitle = (e: any) => {
@@ -120,18 +132,39 @@ function Search() {
   }
 
   const onClickWrite = (e: any) => {
-    if(article.articleTitle && article.articleContent)
-    if (article.articleTitle.trim().length > 0 && article.articleContent.trim().length > 0) {
-      gvRequest('post', 'question/create', article, null)
-        .then(value => {
-          getAllQuestions();
-          // setItem(oldArray => [...oldArray, value.data.questions]); // 기존 state에 push하는 법
+    if (article.articleTitle && article.articleContent && password.trim().length > 0)
+      if (article.articleTitle.trim().length > 0 && article.articleContent.trim().length > 0) {
+        gvRequest('post', 'question/create', article, {headers: {createPw: password}})
+          .then(value => {
+            onClickShowAdd();
+            getAllQuestions();
+            // setItem(oldArray => [...oldArray, value.data.questions]); // 기존 state에 push하는 법
+          })
+          .catch(reason => {
+            console.log(`Error: ${reason}`);
+          })
+          .finally();
+      }
+  }
+
+  const onClickModify = (e: any) => {
+    if (globalState.titleModified && globalState.contentModified && password.trim().length > 0)
+      if (globalState.titleModified.trim().length > 0 && globalState.contentModified.trim().length > 0) {
+        gvRequest('put', `question/modify/${globalState.modifyId}`, {articleTitle: globalState.titleModified, articleContent: globalState.contentModified}, {
+          headers: {
+            modifyPw: password
+          }
         })
-        .catch(reason => {
-          console.log(`Error: ${reason}`);
-        })
-        .finally(onClickShowAdd);
-    }
+          .then(value => {
+            dispatcher(actionModifyQuestion({dialog: false}));
+            getAllQuestions();
+            // setItem(oldArray => [...oldArray, value.data.questions]); // 기존 state에 push하는 법
+          })
+          .catch(reason => {
+            console.log(`Error: ${reason}`);
+          })
+          .finally();
+      }
   }
 
   function renderDeletePopup() {
@@ -144,9 +177,9 @@ function Search() {
               <form>
                 <input
                   type="password"
-                  className={"delete-pw"}
                   autoComplete={"on"}
-                  value={password}
+                  className={"delete-pw"}
+                  value={password || ""}
                   onChange={event => {
                     setPassword(event.target.value)
                   }}/>
@@ -155,14 +188,14 @@ function Search() {
                 <span
                   className={"delete-confirm"}
                   onClick={(event => {
-                    deleteQuestion(globalState.deleteId)
+                    deleteQuestion(globalState.deleteId);
                   })}>
                   {t('W0005')}
                 </span>
                 <span
                   className={"delete-cancel"}
                   onClick={(event) => {
-                    dispatcher(dismissDialog(""));
+                    dispatcher(actionDismissDialog());
                   }}>
                   {t('W0006')}
                 </span>
@@ -205,7 +238,7 @@ function Search() {
             <span id={"sd-desc"}>{t('W0001')}</span>
             <input
               className={"sd-title"}
-              value={article.articleTitle}
+              value={article.articleTitle || ""}
               onChange={(e) => {
                 onChangeTitle(e)
               }}
@@ -213,17 +246,81 @@ function Search() {
             <span id={"sd-desc"}>{t('W0002')}</span>
             <textarea
               className={"sd-content"}
-              value={article.articleContent}
+              value={article.articleContent || ""}
               onChange={(e) => {
                 onChangeContent(e)
               }}
             />
+            <span id={"sd-desc"}>{t('W0007')}</span>
+            <form className={"sd-pw-form"}>
+              <input
+                className={"sd-password"}
+                value={password || ""}
+                type="password"
+                autoComplete={"on"}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </form>
             <button
               className={"sd-write"}
               onClick={(e) => {
                 onClickWrite(e)
               }}
             >{t('W0003')}</button>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  function renderModifyDialog() {
+    if (globalState.isModifyDialog) {
+      return (
+        <div className={"search-dialog"}>
+          <div className={"sd-container"}>
+            <img
+              className={"sd-close"}
+              src={icClose}
+              onClick={(e) => {
+                dispatcher(actionModifyQuestion({dialog: false}));
+              }}
+              alt={""}/>
+            <span id={"sd-desc"}>{t('W0001')}</span>
+            <input
+              className={"sd-title"}
+              value={globalState.titleModified || ""}
+              onChange={(e) => {
+                onChangeMTitle(e)
+              }}
+            />
+            <span id={"sd-desc"}>{t('W0002')}</span>
+            <textarea
+              className={"sd-content"}
+              value={globalState.contentModified || ""}
+              onChange={(e) => {
+                onChangeMContent(e)
+              }}
+            />
+            <span id={"sd-desc"}>{t('W0007')}</span>
+            <form className={"sd-pw-form"}>
+              <input
+                className={"sd-password"}
+                value={password || ""}
+                type="password"
+                autoComplete={"on"}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </form>
+            <button
+              className={"sd-modify"}
+              onClick={(e) => {
+                onClickModify(e)
+              }}
+            >{t('W0008')}</button>
           </div>
         </div>
       );
@@ -246,6 +343,7 @@ function Search() {
       </header>
       <div className={"search-container"}>
         {renderAddDialog()}
+        {renderModifyDialog()}
         {renderArticles()}
         {renderDeletePopup()}
         {

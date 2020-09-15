@@ -1,6 +1,6 @@
 @import "variable";
 
-$SEARCH_WIDTH: 40%;
+$SEARCH_WIDTH: 60%;
 
   .search-header {
     width: 100%;
@@ -92,13 +92,13 @@ $SEARCH_WIDTH: 40%;
             width: 100%;
             height: inherit;
             align-self: center;
-            @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 16px);
+            @include setFont($COLOR_SCARLET_RED, $FONT_WEIGHT_MEDIUM, 16px);
             @include setCursorPointer();
           }
           .delete-cancel {
             width: 100%;
             height: inherit;
-            @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 16px);
+            @include setFont($COLOR_LIGHT_GREEN, $FONT_WEIGHT_MEDIUM, 16px);
             @include setCursorPointer();
           }
         }
@@ -173,6 +173,29 @@ $SEARCH_WIDTH: 40%;
           @include setCursorPointer();
           @include setFont($COLOR_SUCCESS, $FONT_WEIGHT_BOLD, 20px);
         }
+        .sd-modify {
+          width: $SEARCH_WIDTH;
+          margin-top: 50px;
+          padding: 10px;
+          background: $COLOR_000000;
+          border: 1px solid $COLOR_PURPLE;
+          @include setCursorPointer();
+          @include setFont($COLOR_PURPLE, $FONT_WEIGHT_BOLD, 20px);
+        }
+
+        .sd-pw-form {
+          min-height: 30px;
+          width: $SEARCH_WIDTH;
+          margin-top: 10px;
+          .sd-password {
+            width: 100%;
+            padding: 10px;
+            background: $COLOR_000000;
+            border: 1px solid #FFC107;
+            @include setFont($COLOR_FFFFFF, $FONT_WEIGHT_MEDIUM, 14px);
+          }
+        }
+
       }
     }
 

@@ -4,7 +4,8 @@ import articles from '../interface/articles.interface';
 import icDelete from '../static/images/close.svg';
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {RootState} from "../modules/rootReducer";
-import {showDialog} from "../modules/global.modules";
+import {actionModifyQuestion, actionShowDialog} from "../modules/global.modules";
+import icEdit from "../static/images/edit.svg";
 
 function SearchItem(props: articles) {
   const globalState = useSelector(((state: RootState) => state.globals), shallowEqual);
@@ -20,7 +21,7 @@ function SearchItem(props: articles) {
                 <span className={"search-title-default"}>{word}</span>
                 {
                   (index !== originText.split(keyword).length - 1) &&
-                  <span className={"search-title-color"}>{keyword}</span>
+																		<span className={"search-title-color"}>{keyword}</span>
                 }
               </Fragment>
             );
@@ -36,13 +37,12 @@ function SearchItem(props: articles) {
         {
           // originText.split('/n').map()
           originText.split(keyword).map((word, index) => {
-            console.log(`word: ${word}`);
             return (
               <Fragment key={index}>
                 <span className={"search-content-default"}>{word}</span>
                 {
                   (index !== originText.split(keyword).length - 1) &&
-                  <span className={"search-content-color"}>{keyword}</span>
+																		<span className={"search-content-color"}>{keyword}</span>
                 }
               </Fragment>
             );
@@ -62,9 +62,16 @@ function SearchItem(props: articles) {
            src={icDelete}
            alt={""}
            onClick={(event) => {
-             dispatcher(showDialog(props._id));
+             dispatcher(actionShowDialog({id: props._id}));
            }}
       />
+      <img
+        className={"search-edit"}
+        src={icEdit}
+        alt={""}
+        onClick={(event) => {
+          dispatcher(actionModifyQuestion({id: props._id, title: props.articleTitle, content: props.articleContent, dialog: true}))
+        }}/>
       {colorTitle(props.articleTitle, props.searchKeyword)}
       {colorContent(props.articleContent, props.searchKeyword)}
     </li>

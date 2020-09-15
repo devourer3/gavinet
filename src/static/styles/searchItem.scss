@@ -17,6 +17,17 @@
     @include setNonSelectable();
     @include setCursorPointer();
   }
+  .search-edit {
+    position: absolute;
+    align-self: flex-end;
+    z-index: 50;
+    background: $COLOR_DARK;
+    margin-top: 40px;
+    width: 18px;
+    height: 18px;
+    @include setNonSelectable();
+    @include setCursorPointer();
+  }
 
   .search-title {
     .search-title-default {
