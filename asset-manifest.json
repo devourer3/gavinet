@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/gavinet/static/css/main.d31f8928.chunk.css",
-    "main.js": "/gavinet/static/js/main.add74c51.chunk.js",
-    "main.js.map": "/gavinet/static/js/main.add74c51.chunk.js.map",
+    "main.css": "/gavinet/static/css/main.e271913d.chunk.css",
+    "main.js": "/gavinet/static/js/main.c823feca.chunk.js",
+    "main.js.map": "/gavinet/static/js/main.c823feca.chunk.js.map",
     "runtime-main.js": "/gavinet/static/js/runtime-main.2be40528.js",
     "runtime-main.js.map": "/gavinet/static/js/runtime-main.2be40528.js.map",
-    "static/js/2.f912b366.chunk.js": "/gavinet/static/js/2.f912b366.chunk.js",
-    "static/js/2.f912b366.chunk.js.map": "/gavinet/static/js/2.f912b366.chunk.js.map",
+    "static/js/2.d6f24415.chunk.js": "/gavinet/static/js/2.d6f24415.chunk.js",
+    "static/js/2.d6f24415.chunk.js.map": "/gavinet/static/js/2.d6f24415.chunk.js.map",
     "index.html": "/gavinet/index.html",
-    "precache-manifest.5dffdb6f976b1f3efbcf2ba7452a3708.js": "/gavinet/precache-manifest.5dffdb6f976b1f3efbcf2ba7452a3708.js",
+    "precache-manifest.8e2938db85271cf18c64670bb830b07a.js": "/gavinet/precache-manifest.8e2938db85271cf18c64670bb830b07a.js",
     "service-worker.js": "/gavinet/service-worker.js",
-    "static/css/main.d31f8928.chunk.css.map": "/gavinet/static/css/main.d31f8928.chunk.css.map",
-    "static/js/2.f912b366.chunk.js.LICENSE.txt": "/gavinet/static/js/2.f912b366.chunk.js.LICENSE.txt",
-    "static/media/close.svg": "/gavinet/static/media/close.b88873b7.svg",
-    "static/media/memo.svg": "/gavinet/static/media/memo.e07981d7.svg",
-    "static/media/refresh.svg": "/gavinet/static/media/refresh.19e14477.svg",
-    "static/media/trash.svg": "/gavinet/static/media/trash.60f9fffb.svg"
+    "static/css/main.e271913d.chunk.css.map": "/gavinet/static/css/main.e271913d.chunk.css.map",
+    "static/js/2.d6f24415.chunk.js.LICENSE.txt": "/gavinet/static/js/2.d6f24415.chunk.js.LICENSE.txt",
+    "static/media/close.svg": "/gavinet/static/media/close.fd77d42c.svg",
+    "static/media/edit.svg": "/gavinet/static/media/edit.46ecce54.svg",
+    "static/media/memo.svg": "/gavinet/static/media/memo.32968486.svg",
+    "static/media/refresh.svg": "/gavinet/static/media/refresh.96c48931.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2be40528.js",
-    "static/js/2.f912b366.chunk.js",
-    "static/css/main.d31f8928.chunk.css",
-    "static/js/main.add74c51.chunk.js"
+    "static/js/2.d6f24415.chunk.js",
+    "static/css/main.e271913d.chunk.css",
+    "static/js/main.c823feca.chunk.js"
   ]
 }
